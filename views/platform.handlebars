@@ -1,0 +1,49 @@
+<div class="container">
+    <div id="forms">
+        <form action="/platform" id="platAdd" method="post" class="forms1 col-md-6">
+            <h1>Create new platform</h1>
+            Name:<br>
+            <input class="form-control" type="text" name="name" required>
+            <br>Station:<br>
+            <select class="form-control" form="platAdd" name="station_id">
+                <option value="-1">NULL</option>
+                {{#each transit_stations}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        <form action="/platform/filter" id="platFilter" method="post" class="forms2 col-md-6">
+            <h1>Filter platforms</h1>
+            Name (like):<br>
+            <input class="form-control" type="text" name="platName">
+            <br>Station (like):<br>
+            <input class="form-control" type="text" name="stationName"><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/platform">UnFilter</a>
+        </form>
+    </div>
+
+    <h3>Current platforms</h3>
+    <table class="table table-sm">
+        <thead>
+            <th>Name</th>
+            <th>Station</th>
+        </thead>
+        <tbody>
+            {{#each platforms}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{station_name}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button onclick="deletePlatform({{id}})" class="btn btn-danger">Delete</button>
+                        <a href="/platform/{{id}}">Update</a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

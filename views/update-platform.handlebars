@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Update platform: {{platform.name}}</h1>
+    <form id="update-platform" action="/platform" method="post">
+        Name:<br>
+        <input class="form-control" type="text" name="name" value="{{platform.name}}" required>
+        <br>Station:<br>
+        <select id="station-selector" class="form-control" form="update-platform" name="station_id" required>
+            <option value="-1">NULL</option>
+            {{#each transit_stations}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select><br>
+    </form>
+    <button onclick="updatePlatform({{platform.id}})" class="btn btn-primary">Submit</button>
+    <script defer>selectStation({{platform.station_id}});</script>
+</div>

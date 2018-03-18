@@ -1,0 +1,15 @@
+#operations{
+    display: inline;
+}
+
+form.forms1 form.forms2{
+    display: inline-block;
+}
+
+#forms{
+    padding:0px;
+}
+
+h3{
+    padding-top:10px;
+}

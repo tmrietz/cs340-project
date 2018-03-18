@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Create new line-to-station relationship</h1>
+    <form action="/line_station" id="line_stationAdd" method="post">
+        Line name:<br>
+        <select class="form-control" name="line_id" form="line_stationAdd" required>
+            {{#each lines}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br>Station name:<br>
+        <select class="form-control" name="station_id" form="line_stationAdd" required>
+            {{#each transit_stations}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h3>Current line-to-station</h3>
+
+    <table class="table table-sm">
+        <thead>
+            <th>Line</th>
+            <th>Station</th>
+        </thead>
+        <tbody>
+            {{#each line_stations}}
+            <tr>
+                <td>{{line_name}}</td>
+                <td>{{station_name}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button onclick="deleteLineStation({{id}})" class="btn btn-danger">Delete</button>
+                        <a href="/line_station/{{id}}">Update</a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

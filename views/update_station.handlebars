@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>Update station: {{name}}</h1>
+    <form id="update-station" action="/station" method="post">
+        Name:<br>
+        <input class="form-control" type="text" name="name" value="{{name}}">
+        <br>Underground:<br>
+        {{#if underground}}
+            <input class="checkbox" type="checkbox" name="underground" checked>
+        {{else}}
+            <input class="checkbox" type="checkbox" name="underground">
+        {{/if}}
+        <br>
+    </form>
+    <button onclick="updateStation({{id}})" class="btn btn-primary">Update</button>
+</div>

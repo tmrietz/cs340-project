@@ -1,0 +1,7 @@
+<h1>Error: Cannot delete transit_type if related to line. Update the line(s) transit type first</h1>
+<h3>Delete failed on {{lines.1.fail_count}} entities:</h3>
+<ul>
+    {{#each lines}}
+    <li>{{id}}: {{name}}</li>
+    {{/each}}
+</ul>

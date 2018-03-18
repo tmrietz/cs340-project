@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Create new transit line</h1>
+    <form action="/line" id="lineAdd" method="post">
+        Name:<br>
+        <input class="form-control" type="text" name="name">
+        <br>Transit type:
+        <select class="form-control" name="transit_type_id" form="lineAdd" required>
+            {{#each transit_types}}
+                <option value={{id}}>{{transit_type}}</option>
+            {{/each}}
+        </select>
+        <br>System:
+        <select class="form-control" name="system_id" form="lineAdd" required>
+            {{#each systems}}
+                <option value={{id}}>{{name}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h3>Current lines</h3>
+    <table class="table table-sm">
+        <thead>
+            <th>Name</th>
+            <th>Transit Type</th>
+            <th>System</th>
+        </thead>
+        <tbody>
+            {{#each lines}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{transit_type}}</td>
+                <td>{{system_name}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button onclick="deleteLine({{id}})" class="btn btn-danger">Delete</button>
+                        <a href="/line/{{id}}" >Update</a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

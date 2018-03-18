@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Update line-to-station relationship: {{line_station.line_name}}, {{line_station.station_name}}</h1>
+    <form id="update-line_station" action="/line_station" method="post">
+        Line name:<br>
+        <select id="line-selector" class="form-control" name="line_id" form="update-line_station" required>
+            {{#each lines}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br>Station name:<br>
+        <select id="station-selector" class="form-control" name="station_id" form="update-line_station" required>
+            {{#each transit_stations}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br>
+    </form>
+    <button onclick="updateLineStations({{line_station.id}})" class="btn btn-primary">Submit</button>
+    <script defer>selectStation({{line_station.station_id}});</script>
+    <script defer>selectLine({{line_station.line_id}});</script>
+</div>

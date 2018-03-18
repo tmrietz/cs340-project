@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Create new transit station</h1>
+    <form action="/station" method="post">
+        Name:<br>
+        <input class="form-control" type="text" name="name">
+        <br>Underground:<br>
+        <input id="checkbox" class="checkbox" type="checkbox" name="underground"><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h3>Current transit stations</h3>
+    <h6>Note: Due to schema constraints on 'platform', station deletions will do nothing if the station is related to platforms</h6>
+    <table class="table table-sm">
+        <thead>
+            <th>Name</th>
+            <th>Underground</th>
+        </thead>
+        <tbody>
+            {{#each transit_stations}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{underground}}</td>
+                <td>
+                    <div id="operations" class="btn-group-sm">
+                        <button type="button" class="btn btn-danger" onclick="deleteStation({{id}})">Delete</button>
+                        <a href="/station/{{id}}" >Update</a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

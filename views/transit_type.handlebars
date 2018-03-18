@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Create new transit type</h1>
+    <form action="/transit_type" method="post">
+        Transit type:<br>
+        <input class="form-control" type="text" name="transit_type" required><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h3>Current transit types</h3>
+    <h6>Note: Due to schema constraints on 'line', transit type deletions will do nothing if the transit type is related to a line</h6>
+    <table class="table table-sm">
+        <thead>
+            <th>Transit Type</th>
+        </thead>
+        <tbody>
+            {{#each transit_types}}
+            <tr>
+                <td>{{transit_type}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button onclick="deleteTransitType({{id}})" class="btn btn-danger">Delete</button>
+                        <a href="/transit_type/{{id}}" >Update</a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

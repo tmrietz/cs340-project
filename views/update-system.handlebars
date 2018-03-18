@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Update system: {{system.name}}</h1>
+    <form id="update-system" action="/system" method="post">
+        Name:<br>
+        <input class="form-control form-control-sm" type="text" name="name" value="{{system.name}}" required>
+        <br>URL:<br>
+        <input class="form-control form-control-sm" type="url" name="url" value="{{system.url}}" required><br>
+    </form>
+    <button onclick="updateSystem({{system.id}})" class="btn btn-primary">Submit</button>
+</div>
+

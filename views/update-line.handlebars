@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Update transit line: {{line.name}}</h1>
+    <form id="update-line" action="/line" method="post">
+        Name:<br>
+        <input class="form-control" type="text" name="name" value="{{line.name}}">
+        <br>Transit type:
+        <select id="transitType-selector" class="form-control" name="transit_type_id" form="update-line" required>
+            {{#each transit_types}}
+                <option value="{{id}}">{{transit_type}}</option>
+            {{/each}}
+        </select>
+        <br>System:
+        <select id="system-selector" class="form-control" name="system_id" form="update-line" required>
+            {{#each systems}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br>
+    </form>
+    <button onclick="updateLine({{line.id}})" class="btn btn-primary">Submit</button>
+    <script defer>selectTransitType({{line.transit_type_id}});</script>
+    <script defer>selectSystem({{line.system_id}});</script>
+</div>
